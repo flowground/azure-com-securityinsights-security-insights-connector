@@ -1,0 +1,526 @@
+{
+    "title": "Security Insights",
+    "description": "API spec for Microsoft.SecurityInsights (Azure Security Insights) resource provider",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/securityinsights-SecurityInsights/2019-01-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all operations available Azure Security Insights Resource Provider.",
+            "description": "Lists all operations available Azure Security Insights Resource Provider.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AlertRules_List": {
+            "main": "./lib/actions/AlertRules_List.js",
+            "title": "Gets all alert rules.",
+            "description": "Gets all alert rules.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AlertRules_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AlertRules_Delete": {
+            "main": "./lib/actions/AlertRules_Delete.js",
+            "title": "Delete the alert rule.",
+            "description": "Delete the alert rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AlertRules_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AlertRules_Get": {
+            "main": "./lib/actions/AlertRules_Get.js",
+            "title": "Gets the alert rule.",
+            "description": "Gets the alert rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AlertRules_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AlertRules_CreateOrUpdate": {
+            "main": "./lib/actions/AlertRules_CreateOrUpdate.js",
+            "title": "Creates or updates the alert rule.",
+            "description": "Creates or updates the alert rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AlertRules_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Actions_ListByAlertRule": {
+            "main": "./lib/actions/Actions_ListByAlertRule.js",
+            "title": "Gets all actions of alert rule.",
+            "description": "Gets all actions of alert rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Actions_ListByAlertRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AlertRules_DeleteAction": {
+            "main": "./lib/actions/AlertRules_DeleteAction.js",
+            "title": "Delete the action of alert rule.",
+            "description": "Delete the action of alert rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AlertRules_DeleteAction.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AlertRules_GetAction": {
+            "main": "./lib/actions/AlertRules_GetAction.js",
+            "title": "Gets the action of alert rule.",
+            "description": "Gets the action of alert rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AlertRules_GetAction.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AlertRules_CreateOrUpdateAction": {
+            "main": "./lib/actions/AlertRules_CreateOrUpdateAction.js",
+            "title": "Creates or updates the action of alert rule.",
+            "description": "Creates or updates the action of alert rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AlertRules_CreateOrUpdateAction.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookmarks_List": {
+            "main": "./lib/actions/Bookmarks_List.js",
+            "title": "Gets all bookmarks.",
+            "description": "Gets all bookmarks.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookmarks_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookmarks_Delete": {
+            "main": "./lib/actions/Bookmarks_Delete.js",
+            "title": "Delete the bookmark.",
+            "description": "Delete the bookmark.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookmarks_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookmarks_Get": {
+            "main": "./lib/actions/Bookmarks_Get.js",
+            "title": "Gets a bookmark.",
+            "description": "Gets a bookmark.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookmarks_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Bookmarks_CreateOrUpdate": {
+            "main": "./lib/actions/Bookmarks_CreateOrUpdate.js",
+            "title": "Creates or updates the bookmark.",
+            "description": "Creates or updates the bookmark.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Bookmarks_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Cases_List": {
+            "main": "./lib/actions/Cases_List.js",
+            "title": "Gets all cases.",
+            "description": "Gets all cases.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Cases_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Cases_Delete": {
+            "main": "./lib/actions/Cases_Delete.js",
+            "title": "Delete the case.",
+            "description": "Delete the case.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Cases_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Cases_Get": {
+            "main": "./lib/actions/Cases_Get.js",
+            "title": "Gets a case.",
+            "description": "Gets a case.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Cases_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Cases_CreateOrUpdate": {
+            "main": "./lib/actions/Cases_CreateOrUpdate.js",
+            "title": "Creates or updates the case.",
+            "description": "Creates or updates the case.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Cases_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnectors_List": {
+            "main": "./lib/actions/DataConnectors_List.js",
+            "title": "Gets all data connectors.",
+            "description": "Gets all data connectors.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnectors_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnectors_Delete": {
+            "main": "./lib/actions/DataConnectors_Delete.js",
+            "title": "Delete the data connector.",
+            "description": "Delete the data connector.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnectors_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnectors_Get": {
+            "main": "./lib/actions/DataConnectors_Get.js",
+            "title": "Gets a data connector.",
+            "description": "Gets a data connector.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnectors_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataConnectors_CreateOrUpdate": {
+            "main": "./lib/actions/DataConnectors_CreateOrUpdate.js",
+            "title": "Creates or updates the data connector.",
+            "description": "Creates or updates the data connector.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataConnectors_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Entities_List": {
+            "main": "./lib/actions/Entities_List.js",
+            "title": "Gets all entities.",
+            "description": "Gets all entities.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Entities_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Entities_Get": {
+            "main": "./lib/actions/Entities_Get.js",
+            "title": "Gets an entity.",
+            "description": "Gets an entity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Entities_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OfficeConsents_List": {
+            "main": "./lib/actions/OfficeConsents_List.js",
+            "title": "Gets all office365 consents.",
+            "description": "Gets all office365 consents.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OfficeConsents_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OfficeConsents_Delete": {
+            "main": "./lib/actions/OfficeConsents_Delete.js",
+            "title": "Delete the office365 consent.",
+            "description": "Delete the office365 consent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OfficeConsents_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "OfficeConsents_Get": {
+            "main": "./lib/actions/OfficeConsents_Get.js",
+            "title": "Gets an office365 consent.",
+            "description": "Gets an office365 consent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/OfficeConsents_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductSettings_Get": {
+            "main": "./lib/actions/ProductSettings_Get.js",
+            "title": "Gets a setting.",
+            "description": "Gets a setting.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductSettings_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProductSettings_Update": {
+            "main": "./lib/actions/ProductSettings_Update.js",
+            "title": "Updates the setting.",
+            "description": "Updates the setting.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProductSettings_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

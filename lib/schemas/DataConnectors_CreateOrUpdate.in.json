@@ -1,0 +1,113 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "operationalInsightsResourceProvider": {
+            "required": true,
+            "type": "string"
+        },
+        "workspaceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90
+        },
+        "dataConnectorId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An azure resource object",
+                    "properties": {
+                        "id": {
+                            "description": "Azure resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Azure resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Azure resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                },
+                {
+                    "description": "Describes an Azure resource with kind.",
+                    "properties": {
+                        "kind": {
+                            "description": "The kind of the data connector",
+                            "enum": [
+                                "AzureActiveDirectory",
+                                "AzureSecurityCenter",
+                                "MicrosoftCloudAppSecurity",
+                                "ThreatIntelligence",
+                                "Office365"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "DataConnectorKind",
+                                "values": [
+                                    {
+                                        "value": "AzureActiveDirectory"
+                                    },
+                                    {
+                                        "value": "AzureSecurityCenter"
+                                    },
+                                    {
+                                        "value": "MicrosoftCloudAppSecurity"
+                                    },
+                                    {
+                                        "value": "ThreatIntelligence"
+                                    },
+                                    {
+                                        "value": "Office365"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "type": "object"
+                }
+            ],
+            "description": "Data connector.",
+            "discriminator": {
+                "propertyName": "kind"
+            },
+            "properties": {
+                "etag": {
+                    "description": "Etag of the data connector.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "2019-01-01-preview"
+            ]
+        }
+    }
+}

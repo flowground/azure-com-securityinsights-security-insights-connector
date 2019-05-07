@@ -1,0 +1,151 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "operationalInsightsResourceProvider": {
+            "required": true,
+            "type": "string"
+        },
+        "workspaceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90
+        },
+        "bookmarkId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An azure resource object",
+                    "properties": {
+                        "id": {
+                            "description": "Azure resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Azure resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Azure resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Represents a bookmark in Azure Security Insights.",
+            "properties": {
+                "etag": {
+                    "description": "Etag of the bookmark.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Bookmark properties",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "createdBy": {
+                            "description": "Describes a user that created the bookmark",
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "description": "The email of the user.",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the user.",
+                                    "type": "string"
+                                },
+                                "objectId": {
+                                    "description": "The object id of the user.",
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "createdTimeUtc": {
+                            "description": "The time the bookmark was created",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "description": "The display name of the bookmark",
+                            "type": "string"
+                        },
+                        "labels": {
+                            "description": "List of labels relevant to this bookmark",
+                            "items": {
+                                "description": "Label that will be used to tag and filter on.",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "lastUpdatedTimeUtc": {
+                            "description": "The last time the bookmark was updated",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "notes": {
+                            "description": "The notes of the bookmark",
+                            "type": "string"
+                        },
+                        "query": {
+                            "description": "The query of the bookmark.",
+                            "type": "string"
+                        },
+                        "updatedBy": {
+                            "description": "Describes a user that updated the bookmark",
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "description": "The email of the user.",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the user.",
+                                    "type": "string"
+                                },
+                                "objectId": {
+                                    "description": "The object id of the user.",
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": [
+                        "displayName",
+                        "query"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "2019-01-01-preview"
+            ]
+        }
+    }
+}

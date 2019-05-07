@@ -1,0 +1,235 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string",
+            "pattern": "^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._\\(\\)]+$"
+        },
+        "operationalInsightsResourceProvider": {
+            "required": true,
+            "type": "string"
+        },
+        "workspaceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90
+        },
+        "caseId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An azure resource object",
+                    "properties": {
+                        "id": {
+                            "description": "Azure resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Azure resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Azure resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Represents a case in Azure Security Insights.",
+            "properties": {
+                "etag": {
+                    "description": "Etag of the alert rule.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Case properties",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "assignedTo": {
+                            "description": "Describes a user that the case is assigned to",
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "description": "The email of the user.",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the user.",
+                                    "type": "string"
+                                },
+                                "objectId": {
+                                    "description": "The object id of the user.",
+                                    "format": "uuid",
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "closeReason": {
+                            "description": "The reason the case was closed",
+                            "enum": [
+                                "Resolved",
+                                "Dismissed",
+                                "Other"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "CloseReason",
+                                "values": [
+                                    {
+                                        "description": "Case was resolved",
+                                        "value": "Resolved"
+                                    },
+                                    {
+                                        "description": "Case was dismissed",
+                                        "value": "Dismissed"
+                                    },
+                                    {
+                                        "description": "Case was closed for another reason",
+                                        "value": "Other"
+                                    }
+                                ]
+                            }
+                        },
+                        "createdTimeUtc": {
+                            "description": "The time the case was created",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "description": {
+                            "description": "The description of the case",
+                            "type": "string"
+                        },
+                        "endTimeUtc": {
+                            "description": "The end time of the case",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "labels": {
+                            "description": "List of labels relevant to this case",
+                            "items": {
+                                "description": "Label that will be used to tag and filter on.",
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "lastUpdatedTimeUtc": {
+                            "description": "The last time the case was updated",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "severity": {
+                            "description": "The severity of the case",
+                            "enum": [
+                                "Critical",
+                                "High",
+                                "Medium",
+                                "Low",
+                                "Informational"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "CaseSeverity",
+                                "values": [
+                                    {
+                                        "description": "Critical severity",
+                                        "value": "Critical"
+                                    },
+                                    {
+                                        "description": "High severity",
+                                        "value": "High"
+                                    },
+                                    {
+                                        "description": "Medium severity",
+                                        "value": "Medium"
+                                    },
+                                    {
+                                        "description": "Low severity",
+                                        "value": "Low"
+                                    },
+                                    {
+                                        "description": "Informational severity",
+                                        "value": "Informational"
+                                    }
+                                ]
+                            }
+                        },
+                        "startTimeUtc": {
+                            "description": "The start time of the case",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "status": {
+                            "description": "The status of the case",
+                            "enum": [
+                                "Draft",
+                                "Open",
+                                "InProgress",
+                                "Closed"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "CaseStatus",
+                                "values": [
+                                    {
+                                        "description": "Case that wasn't promoted yet to active",
+                                        "value": "Draft"
+                                    },
+                                    {
+                                        "description": "An active case which isn't handled currently",
+                                        "value": "Open"
+                                    },
+                                    {
+                                        "description": "An active case which is handled",
+                                        "value": "InProgress"
+                                    },
+                                    {
+                                        "description": "A non active case",
+                                        "value": "Closed"
+                                    }
+                                ]
+                            }
+                        },
+                        "title": {
+                            "description": "The title of the case",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "title",
+                        "severity",
+                        "status"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "2019-01-01-preview"
+            ]
+        }
+    }
+}
